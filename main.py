@@ -1,42 +1,22 @@
-# -*- coding:utf-8 -*-
-import requests
-import json
-
-# 以下为POST请求
-url = 'http://120.238.246.103:60009/reverews.asmx/pay/heart?'      #接口地址
-#url = 'http://192.168.5.6:60009/reverews.asmx/pay/heart?'
-
-headers = {"Content-Type": "application/x-www-form-urlencoded"}    #如果不指定，也是默认用这个类型的
-
-postdatas ='jsondata={"machine_id":"18AA520A","machine_ip":"192.168.0.200","machine_mac":"40204AFF18AA","sign":"76A061BCA3E649C1F94A84F14FD82AFC"}'
-
-postdatas ='jsondata={"machine_id":"18AA520A","machine_ip":"192.168.0.200","machine_mac":"40204AFF18AA","sign":"76A061BCA3E649C1F94A84F14FD82AFC"}'
+# 这是一个示例 Python 脚本。
+from PyQt5.QtWidgets import QApplication,QWidget
+import sys
+# 按 Shift+F10 执行或将其替换为您的代码。
+# 按 双击 Shift 在所有地方搜索类、文件、工具窗口、操作和设置。
 
 
-r = requests.post(url, data=postdatas,headers=headers)
-print (r.status_code)           #返回状态码是200表示收到响应。
-print(r.content)
-'''
-b'{"clear_now":0,"deal_money":0,"heart_rate":0,"ihdr":0,"interval_second":0,"living_check":0,"living_value":0,"lovertimems":0,"machine_addr":0,"open_time":0,"remote_ctrl":0,"result_code":"FAIL","return_code":"SUCCESS","return_msg":"\xe8\xae\xbe\xe5\xa4\x87\xe6\x97\xa0\xe6\x95\x88","set_iving_mode":0,"set_offline":0,"setrange":0,"update_card_count":0,"update_face_count":0,"verification":0,"work_mode":0,"write_card":0,"out_sign":null}'
-'''
+def print_hi(name):
+    # 在下面的代码行中使用断点来调试脚本。
+    print(f'Hi, {name}')  # 按 Ctrl+F8 切换断点。
 
-data1=json.loads(r.content)     #将JSON数据解码为dict（字典）
-print(data1)
-print(data1['clear_now'])       #打印字典中某字段数据
-print(data1['return_code'])     #打印字典中某字段数据
 
-'''
-{'clear_now': 0, 'deal_money': 0, 'heart_rate': 0, 'ihdr': 0, 'interval_second': 0, 'living_check': 0, 'living_value': 0, 'lovertimems': 0, 'machine_addr': 0, 'open_time': 0, 'remote_ctrl': 0, 'result_code': 'FAIL', 'return_code': 'SUCCESS', 'return_msg': '设备无效', 'set_iving_mode': 0, 'set_offline': 0, 'setrange': 0, 'update_card_count': 0, 'update_face_count': 0, 'verification': 0, 'work_mode': 0, 'write_card': 0, 'out_sign': None}
-'''
-
-#
-# data={"name":"sunxiaomin","sex":"男","年龄":"26"}
-# #将python字典类型变成json数据格式
-# json_str=json.dumps(data)
-# print(json_str)
-# print(type(json_str))
-# #将JSON数据解码为dict（字典）
-# data1=json.loads(json_str)
-# print(data1)
-# print(type(data1))
-# print(data1['sex'])
+# 按间距中的绿色按钮以运行脚本。
+if __name__ == '__main__':
+    print_hi('PyCharm')
+    app =QApplication(sys.argv)     #创建QApplication
+    w =QWidget()                    #创建一个窗口
+    w.resize(600,400)
+    w.move(0,0)
+    w.setWindowTitle("串口调试工具")
+    w.show()
+    sys.exit(app.exec())                #进入主循环程序
